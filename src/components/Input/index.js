@@ -1,6 +1,6 @@
 import React from 'react';
 import InputHead from '../InputHead/index';
-import { Input, Label, Group } from './styles';
+import { Input, Label, Group, Range } from './styles';
 
 function IsColor(props) {
   switch (props.type) {
@@ -8,26 +8,41 @@ function IsColor(props) {
       const id = Math.random();
 
       return <Group>
-        <Label for={id} type={props.type} >{props.name}</Label>
+        <InputHead>
+          {props.name}
+          <Label for={id} type={props.type} />
+        </InputHead>
 
-        <Input id={id} type={props.type} />
+        <Input id={id} type={props.type} onChange={() => alert('ola')} />
       </Group>
     case 'switch':
 
       return <Group>
+        {/* <LabelSwitch on={props.active} off={props.disabled}></LabelSwitch> */}
         <Input type="checkbox" />
+      </Group>
+
+    case 'range':
+      return <Group>
+        <InputHead>
+          {props.name}
+        </InputHead>
+
+        <Range type={props.type} />
       </Group>
 
     default:
       return <Group>
-        <InputHead content={props.name} />
+        <InputHead>
+          {props.name}
+        </InputHead>
 
-        <Input type={props.type || 'range'} />
+        <Input type={props.type || 'text'} />
       </Group>
   }
 }
 
-function Range(props) {
+function InputCompiler(props) {
   return (
     <>
       <IsColor type={props.type} name={props.name} />
@@ -35,4 +50,4 @@ function Range(props) {
   )
 }
 
-export default Range
+export default InputCompiler

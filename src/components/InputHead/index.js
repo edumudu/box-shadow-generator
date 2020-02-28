@@ -4,7 +4,7 @@ import { InputHeadTag } from './styles'
 function InputHead(props) {
   return (
     <InputHeadTag>
-      {props.content}
+      {props.children}
     </InputHeadTag>
   )
 }
