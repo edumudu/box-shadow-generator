@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export default styled.a `
-  background: #d9e3f0; 
-  background: linear-gradient(to right, #d9e3f0, #ba68c8); 
-  background: -webkit-linear-gradient(to right, #d9e3f0, #ba68c8); 
+  background: #ff8a65; 
+  background:  linear-gradient(to right, #ff8a65, #ba68c8); 
+  background:  -webkit-linear-gradient(to right, #ff8a65, #ba68c8); 
   color: #ffffff;
   text-decoration: none;
   border-radius: 2px;

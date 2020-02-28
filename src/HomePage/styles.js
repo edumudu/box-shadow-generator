@@ -2,9 +2,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle `
   body {
-    background: #d9e3f0; 
-    background: linear-gradient(to left, #d9e3f0, #ba68c8); 
-    background: -webkit-linear-gradient(to left, #d9e3f0, #ba68c8);
+    background: #ff8a65; 
+    background:  linear-gradient(to right, #ff8a65, #ba68c8); 
+    background:  -webkit-linear-gradient(to right, #ff8a65, #ba68c8); 
   }
 `
 

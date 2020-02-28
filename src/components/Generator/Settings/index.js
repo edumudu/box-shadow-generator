@@ -1,35 +1,130 @@
-import React from 'react'
-import Input from '../../Input/index'
-import { SettingsTag, Group } from './styles'
+import React, { useState } from 'react';
+import Input from '../../Input/index';
+import { SettingsTag, Group, Command } from './styles';
 
-function Settings() {
+function Settings(props) {
+  const [shadow, setShadow] = useState(props.data.shadow)
+
+  function handleChangeShadow (value) {
+    const newShadow = { ...shadow, ...value }
+    setShadow(newShadow)
+    props.changed({ shadow: newShadow })
+  }
 
   return (
     <SettingsTag>
       <Group>
-        <Input type="range" name="Horizontal Length" />
+        <Input
+          type="range"
+          name="Horizontal Length"
+          min="-200"
+          max="200"
+          value={shadow.x}
+          onChange={val => handleChangeShadow( { x: val } )}
+        />
 
-        <Input type="range" name="Vertical Length" />
+        <Input 
+          type="range"
+          name="Vertical Length"
+          min="-200"
+          max="200"
+          value={shadow.y}
+          onChange={val => handleChangeShadow( { y: val } )}
+        />
       </Group>
 
       <Group>
-        <Input type="range" name="Blur Radius" />
+        <Input
+          type="range"
+          name="Blur Radius"
+          value={shadow.blur}
+          min="0"
+          max="200"
+          onChange={val => handleChangeShadow( { blur: val } )}
+        />
 
-        <Input type="range" name="Spread Radius" />
+        <Input
+          type="range"
+          name="Spread Radius"
+          value={shadow.length}
+          min="-100"
+          max="200"
+          onChange={val => handleChangeShadow( { length: val } )}
+        />
 
-        <Input type="range" name="Opacity" />
+        <Input
+          type="range"
+          name="Opacity"
+          value={shadow.alpha}
+          min="0"
+          max="1"
+          step="0.01"
+          onChange={val => handleChangeShadow( { alpha: val } )}
+        />
       </Group>
 
       <Group>
-        <Input type="color" name="Shadow color" onChange={() => alert('dsa')} min="0"/>
+        <Input 
+          type="color" 
+          name="Shadow color"
+          value={shadow.color}
+          alpha={shadow.alpha}
+          onChange={val => handleChangeShadow( { color: val.color, alpha: val.alpha } )}
+        />
 
-        <Input type="color" name="Background color" />
+        <Input 
+          type="color" 
+          name="Background color" 
+          value={props.data.bg} 
+          alpha={shadow.alpha}
+          onChange={val => props.changed({ bg: val.color })} 
+        />
 
-        <Input type="color" name="Box color" />
+        <Input 
+          type="color" 
+          name="Box color"
+          value={props.data.box} 
+          alpha={shadow.alpha}
+          onChange={val => props.changed({ box: val.color })} 
+        />
       </Group>
 
       <Group>
-        <Input type="switch" name="Box color" />
+        <Input
+          type="switch"
+          name="Box color"
+          active="Inset"
+          disabled="Outline"
+          onChange={val => handleChangeShadow({ mode: val })}
+        />
+      </Group>
+
+      <Group>
+        <Command>
+          -webkit-box-shadow: 
+            {shadow.mode}&nbsp;
+            {shadow.x}px&nbsp;
+            {shadow.y}px&nbsp;
+            {shadow.blur}px&nbsp;
+            {shadow.length}px&nbsp;
+            {shadow.color};
+          <br />
+          -moz-box-shadow: 
+            {shadow.mode}&nbsp;
+            {shadow.x}px&nbsp;
+            {shadow.y}px&nbsp;
+            {shadow.blur}px&nbsp;
+            {shadow.length}px&nbsp;
+            {shadow.color}px;
+          <br />
+          box-shadow: 
+            {shadow.mode}&nbsp;
+            {shadow.x}px&nbsp;
+            {shadow.y}px&nbsp;
+            {shadow.blur}px&nbsp;
+            {shadow.length}px&nbsp;
+            {shadow.color};
+        </Command>
       </Group>
     </SettingsTag>
   )

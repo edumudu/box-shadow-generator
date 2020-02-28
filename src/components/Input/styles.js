@@ -12,15 +12,7 @@ export const Group = styled.div `
 export const Input = styled.input `
   width: 100%;
   display: ${props => displayNoneTypes.includes(props.type) ? 'none' : 'inline-block'}
-`
-export const Label = styled.label `
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  border: 1px solid #777;
-  background-color: ${props => props.activeColor};
-  cursor: pointer;
-`
+` 
 
 export const Range = styled.input `
   -webkit-appearance: none;
@@ -49,4 +41,14 @@ export const Range = styled.input `
     background-color: #2f3542;
     cursor: pointer;
   }
+`
+
+export const ValueBox = styled.input `
+  position: relative;
+  width: 40px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px 5px;
+  text-align: center;
+  outline: none;
 `

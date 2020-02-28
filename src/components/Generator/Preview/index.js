@@ -1,14 +1,17 @@
-import React from 'react'
-import { PreviewTag, PreviewElement } from './styles'
+import React from 'react';
+import { PreviewTag, PreviewElement, Command } from './styles';
 
-function Preview() {
+function Preview(props) {
+  const shadow = props.data.shadow;
+
   return (
-    <PreviewTag>
-      <PreviewElement>
-        Preview
-      </PreviewElement>
+    <PreviewTag bg={props.data.bg}>
+      <PreviewElement
+        box={props.data.box}
+        shadow={shadow}
+      />
     </PreviewTag>
   )
 }
 
-export default Preview
+export default Preview;

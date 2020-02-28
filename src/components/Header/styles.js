@@ -10,7 +10,7 @@ export const HeaderTag = styled.header `
   font-size: 1.8rem;
   color: ${props => props.bg > '#cccccc' ? colors.black : colors.white };
   background-color: ${props => props.bg};
-  box-shadow: 0 1px 5px 1px #fff;
+  box-shadow: 0 0 3px #ddd;
 `
 export const Logo = styled.h1 `
   font-size: 1.8rem;

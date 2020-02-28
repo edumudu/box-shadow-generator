@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../components/Header/index'
-import Footer from '../components/Footer/index'
 import Generator from '../components/Generator/index'
 import Card from '../components/Card'
 import { Container, colors } from '../general-styles';
@@ -20,8 +19,6 @@ function HomePage() {
           </Card>
         </Container>
       </MainContent>
-
-      <Footer />
     </>
   );
 }
