@@ -7,23 +7,10 @@ import { Input, Group, Range, ValueBox, InputHead } from './styles';
 function IsColor(props) {
   const [switchActive, setSwitchActive] = useState(false)
 
-  function handlerChangeColor(obj) {
-    props.onChange({ color: hexToRgb(obj.color, obj.alpha), alpha: obj.alpha / 100 })
-  }
-
   function handlerSwitch(e) {
     const check = e.target.checked
     setSwitchActive(check)
     props.onChange( check ? 'inset' : '')
-  }
-
-  function hexToRgb(hex, alpha) {
-    const rgb = hex.substring(1)
-      .match(/.{2}/g)
-      .map(x => parseInt(x, 16))
-      .join();
-
-    return `rgba(${rgb}, ${alpha / 100})`
   }
 
   switch (props.type) {
@@ -36,7 +23,7 @@ function IsColor(props) {
             alpha={+props.alpha * 100}
             color={props.value}
             mode="HSB"
-            onChange={obj => handlerChangeColor(obj)}
+            onChange={obj => props.onChange(obj)}
           >
             <span className="rc-color-picker-trigger" />
           </ColorPicker>

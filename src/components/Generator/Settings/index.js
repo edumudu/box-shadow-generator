@@ -8,6 +8,7 @@ function Settings(props) {
   function handleChangeShadow (value) {
     const newShadow = { ...shadow, ...value }
     setShadow(newShadow)
+    // console.log(newShadow)
     props.changed({ shadow: newShadow })
   }
 
@@ -67,9 +68,9 @@ function Settings(props) {
         <Input 
           type="color" 
           name="Shadow color"
-          value={shadow.color}
+          value={shadow.hex}
           alpha={shadow.alpha}
-          onChange={val => handleChangeShadow( { color: val.color, alpha: val.alpha } )}
+          onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha / 100 } )}
         />
 
         <Input 

@@ -8,6 +8,7 @@ const Generator = () => {
   const [settings, setSettings] = useState({
     shadow: {
       color: 'rgba(0,0,0,1)',
+      hex: '#000000',
       x: 0,
       y: 0,
       length: 0,
@@ -23,7 +24,8 @@ const Generator = () => {
   
   function handleChange(value) {
     const newSettings = {...settings, ...value};
-    setSettings(newSettings); 
+    newSettings.shadow.color = hexToRgb(newSettings.shadow.hex, newSettings.shadow.alpha)
+    setSettings(newSettings);
     setCommand(generateCommand(newSettings.shadow))
   }
 
@@ -50,6 +52,15 @@ const Generator = () => {
     }
 
     return shadowTemplate;
+  }
+
+  function hexToRgb(hex, alpha) {
+    const rgb = hex.substring(1)
+      .match(/.{2}/g)
+      .map(x => parseInt(x, 16))
+      .join();
+
+    return `rgba(${rgb}, ${alpha})`
   }
 
   return (
