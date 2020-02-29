@@ -1,5 +1,5 @@
 import React from 'react';
-import { PreviewTag, PreviewElement, Command } from './styles';
+import { PreviewTag, PreviewElement } from './styles';
 
 function Preview(props) {
   const shadow = props.data.shadow;

@@ -3,7 +3,7 @@ import { Switch, Trigger } from './styles'
 
 function LabelSwitch(props) {
   return (
-    <Switch for={props.for}>
+    <Switch htmlFor={props.for}>
       <span>{props.off}</span>
       <Trigger active={props.active} />
       <span>{props.on}</span>

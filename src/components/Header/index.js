@@ -1,8 +1,6 @@
 import React from 'react';
-import Nav from '../Nav'
-import Button from '../Button'
 import { Container } from '../../general-styles'
-import { HeaderTag, Logo } from './styles';
+import { HeaderTag, Logo, Button, Nav } from './styles';
 
 function Header(props) {
   return (

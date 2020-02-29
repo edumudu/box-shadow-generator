@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { colors } from '../../general-styles';
 
 export const Switch = styled.label `
   display: flex;
@@ -28,7 +29,7 @@ export const Trigger = styled.span `
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: ${props => props.active ? '#ba68c8' : '#ff8a65'};
+    background-color: ${props => props.active ? colors.gradient.start : colors.gradient.end };
     transition: left 0.4s;
   }
 `

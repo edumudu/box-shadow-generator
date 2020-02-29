@@ -1,9 +1,8 @@
 import React from 'react';
 import Header from '../components/Header/index'
 import Generator from '../components/Generator/index'
-import Card from '../components/Card'
 import { Container, colors } from '../general-styles';
-import { MainContent, GlobalStyle } from './styles'
+import { MainContent, GlobalStyle, Card } from './styles'
 
 
 function HomePage() {

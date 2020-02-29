@@ -52,3 +52,8 @@ export const ValueBox = styled.input `
   text-align: center;
   outline: none;
 `
+
+export const InputHead = styled.div `
+  display: flex;
+  justify-content: space-between;
+`

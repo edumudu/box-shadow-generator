@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../../Input/index';
-import { SettingsTag, Group, Command } from './styles';
+import { SettingsTag, Group, Command, IconWrapper } from './styles';
 
 function Settings(props) {
   const [shadow, setShadow] = useState(props.data.shadow)
@@ -76,7 +76,6 @@ function Settings(props) {
           type="color" 
           name="Background color" 
           value={props.data.bg} 
-          alpha={shadow.alpha}
           onChange={val => props.changed({ bg: val.color })} 
         />
 
@@ -84,7 +83,6 @@ function Settings(props) {
           type="color" 
           name="Box color"
           value={props.data.box} 
-          alpha={shadow.alpha}
           onChange={val => props.changed({ box: val.color })} 
         />
       </Group>
@@ -93,38 +91,18 @@ function Settings(props) {
         <Input
           type="switch"
           name="Box color"
-          active="Inset"
           disabled="Outline"
+          active="Inset"
           onChange={val => handleChangeShadow({ mode: val })}
         />
       </Group>
 
       <Group>
-        <Command>
-          -webkit-box-shadow: 
-            {shadow.mode}&nbsp;
-            {shadow.x}px&nbsp;
-            {shadow.y}px&nbsp;
-            {shadow.blur}px&nbsp;
-            {shadow.length}px&nbsp;
-            {shadow.color};
-          <br />
-          -moz-box-shadow: 
-            {shadow.mode}&nbsp;
-            {shadow.x}px&nbsp;
-            {shadow.y}px&nbsp;
-            {shadow.blur}px&nbsp;
-            {shadow.length}px&nbsp;
-            {shadow.color}px;
-          <br />
-          box-shadow: 
-            {shadow.mode}&nbsp;
-            {shadow.x}px&nbsp;
-            {shadow.y}px&nbsp;
-            {shadow.blur}px&nbsp;
-            {shadow.length}px&nbsp;
-            {shadow.color};
-        </Command>
+        <IconWrapper>
+          <i className="material-icons" onClick={() => props.onCopy()}>file_copy</i>
+        </IconWrapper>
+
+        <Command dangerouslySetInnerHTML={{__html: props.command}} />
       </Group>
     </SettingsTag>
   )

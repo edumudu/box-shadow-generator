@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import 'rc-color-picker/assets/index.css';
 import ColorPicker from 'rc-color-picker'
-import InputHead from '../InputHead/index';
 import LabelSwitch from '../LabelSwitch/index';
-import { Input, Group, Range, ValueBox } from './styles';
+import { Input, Group, Range, ValueBox, InputHead } from './styles';
 
 function IsColor(props) {
   const [switchActive, setSwitchActive] = useState(false)

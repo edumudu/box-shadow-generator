@@ -5,6 +5,10 @@ export const SettingsTag = styled.div `
   padding: 0 20px;
   padding-top: 40px;
   max-width: 395px;
+
+  @media screen and (max-width: 920px) {
+    max-width: 700px;
+  }
 `
 
 export const Group = styled.div `
@@ -23,4 +27,15 @@ export const Command = styled.div `
   max-width: 100%;
   overflow: auto;
   white-space: nowrap;
+`
+
+export const IconWrapper = styled.div `
+  text-align: right;
+  color: #888;
+  margin-bottom: 5px;
+
+  i { 
+    cursor: pointer;
+    font-size: 1.3rem;
+  }
 `
