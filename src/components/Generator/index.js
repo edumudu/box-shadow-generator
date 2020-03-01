@@ -31,7 +31,7 @@ const Generator = () => {
 
   function handlerCopy() {
     const dummy = document.createElement('textarea');
-    dummy.value = command.replace(/<br \/>/g, '');
+    dummy.value = command;
     document.body.appendChild(dummy);
 
     dummy.select();
@@ -41,8 +41,8 @@ const Generator = () => {
 
   function generateCommand(shadow) {
     let shadowTemplate = `
-      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color}; <br />
-      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color}; <br />
+      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
       box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
     `;
 

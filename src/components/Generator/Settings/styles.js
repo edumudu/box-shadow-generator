@@ -17,16 +17,10 @@ export const Group = styled.div `
   border-bottom: 1px solid #ccc;
 `
 
-export const Command = styled.div `
-  padding: 15px;
-  line-height: 24px;
-  font-size: 0.85rem;
-  border-radius: 15px;
-  color: #ffffff;
-  background-color: #2b2b2b;
-  max-width: 100%;
-  overflow: auto;
-  white-space: nowrap;
+export const Pre = styled.pre `
+  padding: 0 !important;
+  
+  code { font-family: serif !important; }
 `
 
 export const IconWrapper = styled.div `

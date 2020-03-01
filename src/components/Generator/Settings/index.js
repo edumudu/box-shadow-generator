@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Prism from 'prismjs';
 import Input from '../../Input/index';
-import { SettingsTag, Group, Command, IconWrapper } from './styles';
+import { SettingsTag, Group, Pre, IconWrapper } from './styles';
 
 function Settings(props) {
   const [shadow, setShadow] = useState(props.data.shadow)
@@ -8,8 +9,14 @@ function Settings(props) {
   function handleChangeShadow (value) {
     const newShadow = { ...shadow, ...value }
     setShadow(newShadow)
-    // console.log(newShadow)
     props.changed({ shadow: newShadow })
+  }
+
+  function treatCommand() {
+    let command = props.command
+    command = Prism.highlight(command, Prism.languages.css, 'css');
+
+    return {__html: command}
   }
 
   return (
@@ -103,7 +110,9 @@ function Settings(props) {
           <i className="material-icons" onClick={() => props.onCopy()}>file_copy</i>
         </IconWrapper>
 
-        <Command dangerouslySetInnerHTML={{__html: props.command}} />
+        <Pre>
+          <code className="language-css" dangerouslySetInnerHTML={treatCommand()} />
+        </Pre>
       </Group>
     </SettingsTag>
   )
