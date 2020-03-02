@@ -7,7 +7,11 @@ import { Wrapper } from './styles';
 const Generator = () => {
   const [settings, setSettings] = useState({
     shadow: {
+<<<<<<< HEAD
       color: 'rgba(0,0,0,1)',
+=======
+      rgba: 'rgba(0,0,0,1)',
+>>>>>>> master
       hex: '#000000',
       x: 0,
       y: 0,
@@ -16,15 +20,31 @@ const Generator = () => {
       alpha: 1,
       mode: ''
     },
-    bg: colors.white,
-    box: colors.white
+    bg: {
+      rgba: hexToRgb(colors.white, 1),
+      hex: colors.white,
+      alpha: 1
+    },
+    box: {
+      rgba: hexToRgb(colors.white, 1),
+      hex: colors.white,
+      alpha: 1
+    }
   });
 
   const [command, setCommand] = useState(generateCommand(settings.shadow))
   
   function handleChange(value) {
     const newSettings = {...settings, ...value};
+<<<<<<< HEAD
     newSettings.shadow.color = hexToRgb(newSettings.shadow.hex, newSettings.shadow.alpha)
+=======
+    const key = Object.keys(value)[0]
+    newSettings[key].rgba = hexToRgb(
+      newSettings[key].hex,
+      newSettings[key].alpha
+    )
+>>>>>>> master
     setSettings(newSettings);
     setCommand(generateCommand(newSettings.shadow))
   }
@@ -41,9 +61,15 @@ const Generator = () => {
 
   function generateCommand(shadow) {
     let shadowTemplate = `
+<<<<<<< HEAD
       -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
       -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
       box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+=======
+      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+      box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+>>>>>>> master
     `;
 
     for (let [prop, val] of Object.entries(shadow)) {
@@ -66,7 +92,7 @@ const Generator = () => {
   return (
     <Wrapper>
       <Settings
-        data={settings}
+        {...settings}
         changed={handleChange}
         command={command}
         onCopy={handlerCopy}

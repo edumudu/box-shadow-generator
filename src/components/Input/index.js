@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import 'rc-color-picker/assets/index.css';
 import ColorPicker from 'rc-color-picker'
-import LabelSwitch from '../LabelSwitch/index';
+import LabelSwitch from './LabelSwitch/index';
 import { Input, Group, Range, ValueBox, InputHead } from './styles';
 
 function IsColor(props) {
   const [switchActive, setSwitchActive] = useState(false)
 
+<<<<<<< HEAD
+=======
+  function handlerChangeColor(obj) {
+    props.onChange({ color: obj.color, alpha: obj.alpha / 100 })
+  }
+
+>>>>>>> master
   function handlerSwitch(e) {
     const check = e.target.checked
     setSwitchActive(check)
@@ -80,21 +87,10 @@ function IsColor(props) {
   }
 }
 
-function InputCompiler(props) {
+const InputCompiler = props => {
   return (
     <>
-      <IsColor 
-        type={props.type}
-        name={props.name}
-        value={props.value}
-        min={props.min}
-        max={props.max}
-        step={props.step}
-        active={props.active}
-        disabled={props.disabled}
-        alpha={props.alpha}
-        onChange={val => props.onChange(val)} 
-      />
+      <IsColor {...props} />
     </>
   )
 }

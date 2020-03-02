@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import Prism from 'prismjs';
 import Input from '../../Input/index';
+<<<<<<< HEAD
 import { SettingsTag, Group, Pre, IconWrapper } from './styles';
+=======
+import { SettingsTag, Group, Command, IconWrapper, CopiedMessage } from './styles';
+>>>>>>> master
 
-function Settings(props) {
-  const [shadow, setShadow] = useState(props.data.shadow)
+const Settings = props => {
+  const [shadow, setShadow] = useState(props.shadow)
+  const [copyActive, setCopyActive] = useState(false)
 
   function handleChangeShadow (value) {
     const newShadow = { ...shadow, ...value }
@@ -12,9 +17,27 @@ function Settings(props) {
     props.changed({ shadow: newShadow })
   }
 
+<<<<<<< HEAD
   function treatCommand() {
     let command = props.command
     command = Prism.highlight(command, Prism.languages.css, 'css');
+=======
+  function hadnleChangeColor(prop, val) {
+    const newProp = { ...props[prop], hex: val.color, alpha: val.alpha}
+    props.changed({ [prop]: newProp})
+  }
+
+  function handleCopy() {
+    setCopyActive(true)
+    window.clearTimeout(window.interval)
+    window.interval = window.setTimeout(() => setCopyActive(false), 5000)
+    props.onCopy()
+  }
+
+  function hightlighterCSS() {
+    let command = Prism.highlight(props.command, Prism.languages.css, 'css')
+    command = command.replace(/(;)/g, '; <br />')
+>>>>>>> master
 
     return {__html: command}
   }
@@ -67,7 +90,7 @@ function Settings(props) {
           min="0"
           max="1"
           step="0.01"
-          onChange={val => handleChangeShadow( { alpha: val } )}
+          onChange={val => handleChangeShadow( { alpha: +val } )}
         />
       </Group>
 
@@ -77,21 +100,27 @@ function Settings(props) {
           name="Shadow color"
           value={shadow.hex}
           alpha={shadow.alpha}
+<<<<<<< HEAD
           onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha / 100 } )}
+=======
+          onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha } )}
+>>>>>>> master
         />
 
         <Input 
           type="color" 
           name="Background color" 
-          value={props.data.bg} 
-          onChange={val => props.changed({ bg: val.color })} 
+          value={props.bg.hex}
+          alpha={props.bg.alpha}
+          onChange={val => hadnleChangeColor('bg', val)} 
         />
 
         <Input 
           type="color" 
           name="Box color"
-          value={props.data.box} 
-          onChange={val => props.changed({ box: val.color })} 
+          value={props.box.hex} 
+          alpha={props.box.alpha}
+          onChange={val => hadnleChangeColor('box', val)} 
         />
       </Group>
 
@@ -106,13 +135,23 @@ function Settings(props) {
       </Group>
 
       <Group>
-        <IconWrapper>
-          <i className="material-icons" onClick={() => props.onCopy()}>file_copy</i>
+        <IconWrapper active={copyActive}>
+          <span>
+            <i className="material-icons" onClick={handleCopy}>file_copy</i>
+
+            { copyActive && <CopiedMessage>Copied</CopiedMessage> }
+          </span>
         </IconWrapper>
 
+<<<<<<< HEAD
         <Pre>
           <code className="language-css" dangerouslySetInnerHTML={treatCommand()} />
         </Pre>
+=======
+        <Command>
+          <code dangerouslySetInnerHTML={hightlighterCSS()} />
+        </Command>
+>>>>>>> master
       </Group>
     </SettingsTag>
   )

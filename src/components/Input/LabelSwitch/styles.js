@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../general-styles';
+import { colors } from '../../../general-styles';
 
 export const Switch = styled.label `
   display: flex;
