@@ -16,17 +16,26 @@ const Generator = () => {
       alpha: 1,
       mode: ''
     },
-    bg: colors.white,
-    box: colors.white
+    bg: {
+      rgba: hexToRgb(colors.white, 1),
+      hex: colors.white,
+      alpha: 1
+    },
+    box: {
+      rgba: hexToRgb(colors.white, 1),
+      hex: colors.white,
+      alpha: 1
+    }
   });
 
   const [command, setCommand] = useState(generateCommand(settings.shadow))
   
   function handleChange(value) {
     const newSettings = {...settings, ...value};
-    newSettings.shadow.rgba = hexToRgb(
-      newSettings.shadow.hex,
-      newSettings.shadow.alpha
+    const key = Object.keys(value)[0]
+    newSettings[key].rgba = hexToRgb(
+      newSettings[key].hex,
+      newSettings[key].alpha
     )
     setSettings(newSettings);
     setCommand(generateCommand(newSettings.shadow))
@@ -69,7 +78,7 @@ const Generator = () => {
   return (
     <Wrapper>
       <Settings
-        data={settings}
+        {...settings}
         changed={handleChange}
         command={command}
         onCopy={handlerCopy}

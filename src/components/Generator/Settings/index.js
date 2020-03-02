@@ -4,13 +4,18 @@ import Input from '../../Input/index';
 import { SettingsTag, Group, Command, IconWrapper, CopiedMessage } from './styles';
 
 const Settings = props => {
-  const [shadow, setShadow] = useState(props.data.shadow)
+  const [shadow, setShadow] = useState(props.shadow)
   const [copyActive, setCopyActive] = useState(false)
 
   function handleChangeShadow (value) {
     const newShadow = { ...shadow, ...value }
     setShadow(newShadow)
     props.changed({ shadow: newShadow })
+  }
+
+  function hadnleChangeColor(prop, val) {
+    const newProp = { ...props[prop], hex: val.color, alpha: val.alpha}
+    props.changed({ [prop]: newProp})
   }
 
   function handleCopy() {
@@ -83,7 +88,7 @@ const Settings = props => {
         <Input 
           type="color" 
           name="Shadow color"
-          value={shadow.rgba}
+          value={shadow.hex}
           alpha={shadow.alpha}
           onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha } )}
         />
@@ -91,15 +96,17 @@ const Settings = props => {
         <Input 
           type="color" 
           name="Background color" 
-          value={props.data.bg} 
-          onChange={val => props.changed({ bg: val.color })} 
+          value={props.bg.hex}
+          alpha={props.bg.alpha}
+          onChange={val => hadnleChangeColor('bg', val)} 
         />
 
         <Input 
           type="color" 
           name="Box color"
-          value={props.data.box} 
-          onChange={val => props.changed({ box: val.color })} 
+          value={props.box.hex} 
+          alpha={props.box.alpha}
+          onChange={val => hadnleChangeColor('box', val)} 
         />
       </Group>
 

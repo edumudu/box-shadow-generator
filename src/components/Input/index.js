@@ -87,18 +87,7 @@ function IsColor(props) {
 const InputCompiler = props => {
   return (
     <>
-      <IsColor 
-        type={props.type}
-        name={props.name}
-        value={props.value}
-        min={props.min}
-        max={props.max}
-        step={props.step}
-        active={props.active}
-        disabled={props.disabled}
-        alpha={props.alpha}
-        onChange={val => props.onChange(val)} 
-      />
+      <IsColor {...props} />
     </>
   )
 }
