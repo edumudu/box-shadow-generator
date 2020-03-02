@@ -7,7 +7,8 @@ import { Wrapper } from './styles';
 const Generator = () => {
   const [settings, setSettings] = useState({
     shadow: {
-      color: 'rgba(0,0,0,1)',
+      rgba: 'rgba(0,0,0,1)',
+      hex: '#000000',
       x: 0,
       y: 0,
       length: 0,
@@ -23,7 +24,11 @@ const Generator = () => {
   
   function handleChange(value) {
     const newSettings = {...settings, ...value};
-    setSettings(newSettings); 
+    newSettings.shadow.rgba = hexToRgb(
+      newSettings.shadow.hex,
+      newSettings.shadow.alpha
+    )
+    setSettings(newSettings);
     setCommand(generateCommand(newSettings.shadow))
   }
 
@@ -39,9 +44,9 @@ const Generator = () => {
 
   function generateCommand(shadow) {
     let shadowTemplate = `
-      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color}; <br />
-      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color}; <br />
-      box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+      box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
     `;
 
     for (let [prop, val] of Object.entries(shadow)) {
@@ -50,6 +55,15 @@ const Generator = () => {
     }
 
     return shadowTemplate;
+  }
+
+  function hexToRgb(hex, alpha) {
+    const rgb = hex.substring(1)
+      .match(/.{2}/g)
+      .map(x => parseInt(x, 16))
+      .join();
+
+    return `rgba(${rgb}, ${alpha})`
   }
 
   return (

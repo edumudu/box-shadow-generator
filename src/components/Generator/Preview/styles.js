@@ -22,7 +22,7 @@ export const PreviewElement = styled.div `
        ${props.shadow.y}px 
        ${props.shadow.blur}px 
        ${props.shadow.length}px 
-       ${props.shadow.color}`};
+       ${props.shadow.rgba}`};
   -moz-box-shadow: ${props => props.shadow.mode}
     ${props => 
     `${props.shadow.x}px 

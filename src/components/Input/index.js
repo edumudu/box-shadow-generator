@@ -8,22 +8,13 @@ function IsColor(props) {
   const [switchActive, setSwitchActive] = useState(false)
 
   function handlerChangeColor(obj) {
-    props.onChange({ color: hexToRgb(obj.color, obj.alpha), alpha: obj.alpha / 100 })
+    props.onChange({ color: obj.color, alpha: obj.alpha / 100 })
   }
 
   function handlerSwitch(e) {
     const check = e.target.checked
     setSwitchActive(check)
     props.onChange( check ? 'inset' : '')
-  }
-
-  function hexToRgb(hex, alpha) {
-    const rgb = hex.substring(1)
-      .match(/.{2}/g)
-      .map(x => parseInt(x, 16))
-      .join();
-
-    return `rgba(${rgb}, ${alpha / 100})`
   }
 
   switch (props.type) {

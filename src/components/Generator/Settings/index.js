@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
+import Prism from 'prismjs';
 import Input from '../../Input/index';
-import { SettingsTag, Group, Command, IconWrapper } from './styles';
+import { SettingsTag, Group, Command, IconWrapper, CopiedMessage } from './styles';
 
 function Settings(props) {
   const [shadow, setShadow] = useState(props.data.shadow)
+  const [copyActive, setCopyActive] = useState(false)
 
   function handleChangeShadow (value) {
     const newShadow = { ...shadow, ...value }
     setShadow(newShadow)
     props.changed({ shadow: newShadow })
+  }
+
+  function handleCopy() {
+    setCopyActive(true)
+    window.clearTimeout(window.interval)
+    window.interval = window.setTimeout(() => setCopyActive(false), 5000)
+    props.onCopy()
+  }
+
+  function hightlighterCSS() {
+    let command = Prism.highlight(props.command, Prism.languages.css, 'css')
+    command = command.replace(/(;)/g, '; <br />')
+
+    return {__html: command}
   }
 
   return (
@@ -59,7 +75,7 @@ function Settings(props) {
           min="0"
           max="1"
           step="0.01"
-          onChange={val => handleChangeShadow( { alpha: val } )}
+          onChange={val => handleChangeShadow( { alpha: +val } )}
         />
       </Group>
 
@@ -67,9 +83,9 @@ function Settings(props) {
         <Input 
           type="color" 
           name="Shadow color"
-          value={shadow.color}
+          value={shadow.rgba}
           alpha={shadow.alpha}
-          onChange={val => handleChangeShadow( { color: val.color, alpha: val.alpha } )}
+          onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha } )}
         />
 
         <Input 
@@ -98,11 +114,18 @@ function Settings(props) {
       </Group>
 
       <Group>
-        <IconWrapper>
-          <i className="material-icons" onClick={() => props.onCopy()}>file_copy</i>
+        <IconWrapper active={copyActive}>
+          <span>
+            <i className="material-icons" onClick={handleCopy}>file_copy</i>
+            {
+              copyActive ? <CopiedMessage>Copied</CopiedMessage> : ""
+            }
+          </span>
         </IconWrapper>
 
-        <Command dangerouslySetInnerHTML={{__html: props.command}} />
+        <Command>
+          <code dangerouslySetInnerHTML={hightlighterCSS()} />
+        </Command>
       </Group>
     </SettingsTag>
   )
