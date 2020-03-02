@@ -4,9 +4,7 @@ import Generator from '../components/Generator/index'
 import { Container, colors } from '../general-styles';
 import { MainContent, GlobalStyle, Card } from './styles'
 
-
-function HomePage() {
-  return (
+const HomePage = () =>
     <>
       <GlobalStyle />
       <Header bg={colors.white} />
@@ -19,7 +17,5 @@ function HomePage() {
         </Container>
       </MainContent>
     </>
-  );
-}
 
 export default HomePage;

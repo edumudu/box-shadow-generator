@@ -3,7 +3,7 @@ import Prism from 'prismjs';
 import Input from '../../Input/index';
 import { SettingsTag, Group, Command, IconWrapper, CopiedMessage } from './styles';
 
-function Settings(props) {
+const Settings = props => {
   const [shadow, setShadow] = useState(props.data.shadow)
   const [copyActive, setCopyActive] = useState(false)
 
@@ -117,9 +117,8 @@ function Settings(props) {
         <IconWrapper active={copyActive}>
           <span>
             <i className="material-icons" onClick={handleCopy}>file_copy</i>
-            {
-              copyActive ? <CopiedMessage>Copied</CopiedMessage> : ""
-            }
+
+            { copyActive && <CopiedMessage>Copied</CopiedMessage> }
           </span>
         </IconWrapper>
 

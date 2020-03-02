@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import 'rc-color-picker/assets/index.css';
 import ColorPicker from 'rc-color-picker'
-import LabelSwitch from '../LabelSwitch/index';
+import LabelSwitch from './LabelSwitch/index';
 import { Input, Group, Range, ValueBox, InputHead } from './styles';
 
 function IsColor(props) {
@@ -84,7 +84,7 @@ function IsColor(props) {
   }
 }
 
-function InputCompiler(props) {
+const InputCompiler = props => {
   return (
     <>
       <IsColor 
