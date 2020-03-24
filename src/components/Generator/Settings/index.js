@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Prism from 'prismjs';
 import Input from '../../Input/index';
+<<<<<<< HEAD
+import { SettingsTag, Group, Pre, IconWrapper } from './styles';
+=======
 import { SettingsTag, Group, Command, IconWrapper, CopiedMessage } from './styles';
+>>>>>>> master
 
 const Settings = props => {
   const [shadow, setShadow] = useState(props.shadow)
@@ -13,6 +17,11 @@ const Settings = props => {
     props.changed({ shadow: newShadow })
   }
 
+<<<<<<< HEAD
+  function treatCommand() {
+    let command = props.command
+    command = Prism.highlight(command, Prism.languages.css, 'css');
+=======
   function hadnleChangeColor(prop, val) {
     const newProp = { ...props[prop], hex: val.color, alpha: val.alpha}
     props.changed({ [prop]: newProp})
@@ -28,6 +37,7 @@ const Settings = props => {
   function hightlighterCSS() {
     let command = Prism.highlight(props.command, Prism.languages.css, 'css')
     command = command.replace(/(;)/g, '; <br />')
+>>>>>>> master
 
     return {__html: command}
   }
@@ -90,7 +100,11 @@ const Settings = props => {
           name="Shadow color"
           value={shadow.hex}
           alpha={shadow.alpha}
+<<<<<<< HEAD
+          onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha / 100 } )}
+=======
           onChange={val => handleChangeShadow( { hex: val.color, alpha: val.alpha } )}
+>>>>>>> master
         />
 
         <Input 
@@ -129,9 +143,15 @@ const Settings = props => {
           </span>
         </IconWrapper>
 
+<<<<<<< HEAD
+        <Pre>
+          <code className="language-css" dangerouslySetInnerHTML={treatCommand()} />
+        </Pre>
+=======
         <Command>
           <code dangerouslySetInnerHTML={hightlighterCSS()} />
         </Command>
+>>>>>>> master
       </Group>
     </SettingsTag>
   )

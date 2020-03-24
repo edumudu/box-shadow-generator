@@ -7,7 +7,11 @@ import { Wrapper } from './styles';
 const Generator = () => {
   const [settings, setSettings] = useState({
     shadow: {
+<<<<<<< HEAD
+      color: 'rgba(0,0,0,1)',
+=======
       rgba: 'rgba(0,0,0,1)',
+>>>>>>> master
       hex: '#000000',
       x: 0,
       y: 0,
@@ -32,18 +36,22 @@ const Generator = () => {
   
   function handleChange(value) {
     const newSettings = {...settings, ...value};
+<<<<<<< HEAD
+    newSettings.shadow.color = hexToRgb(newSettings.shadow.hex, newSettings.shadow.alpha)
+=======
     const key = Object.keys(value)[0]
     newSettings[key].rgba = hexToRgb(
       newSettings[key].hex,
       newSettings[key].alpha
     )
+>>>>>>> master
     setSettings(newSettings);
     setCommand(generateCommand(newSettings.shadow))
   }
 
   function handlerCopy() {
     const dummy = document.createElement('textarea');
-    dummy.value = command.replace(/<br \/>/g, '');
+    dummy.value = command;
     document.body.appendChild(dummy);
 
     dummy.select();
@@ -53,9 +61,15 @@ const Generator = () => {
 
   function generateCommand(shadow) {
     let shadowTemplate = `
+<<<<<<< HEAD
+      -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+      -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+      box-shadow: {mode} {x}px {y}px {blur}px {length}px {color};
+=======
       -webkit-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
       -moz-box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
       box-shadow: {mode} {x}px {y}px {blur}px {length}px {rgba};
+>>>>>>> master
     `;
 
     for (let [prop, val] of Object.entries(shadow)) {
