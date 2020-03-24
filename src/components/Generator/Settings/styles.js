@@ -17,12 +17,6 @@ export const Group = styled.div `
   border-bottom: 1px solid #ccc;
 `
 
-<<<<<<< HEAD
-export const Pre = styled.pre `
-  padding: 0 !important;
-  
-  code { font-family: serif !important; }
-=======
 export const Command = styled.pre `
   padding: 15px;
   line-height: 24px;
@@ -46,7 +40,6 @@ export const Command = styled.pre `
     border-radius: 5px;
     background-color: rgba(190,190,190,0.6);
   }
->>>>>>> master
 `
 
 export const IconWrapper = styled.div `
