@@ -7,13 +7,6 @@ import { Input, Group, Range, ValueBox, InputHead } from './styles';
 function IsColor(props) {
   const [switchActive, setSwitchActive] = useState(false)
 
-<<<<<<< HEAD
-=======
-  function handlerChangeColor(obj) {
-    props.onChange({ color: obj.color, alpha: obj.alpha / 100 })
-  }
-
->>>>>>> master
   function handlerSwitch(e) {
     const check = e.target.checked
     setSwitchActive(check)
