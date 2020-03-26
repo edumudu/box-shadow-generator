@@ -6,6 +6,7 @@ export const HeaderTag = styled.header `
   align-items: center;
   width: 100%;
   height: 80px;
+  padding: 0 2%;
   font-weight: 600;
   font-size: 1.8rem;
   color: ${props => props.bg > '#cccccc' ? colors.black : colors.white };

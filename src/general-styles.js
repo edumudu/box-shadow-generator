@@ -12,7 +12,8 @@ export const colors = {
 
 export const Container = styled.div `
   margin: 0 auto;
-  padding: 0 2%;
   width: 96%;
   max-width: 1180px;
+
+  @media screen and (max-width: 500px) { width: 100%; }
 `;
