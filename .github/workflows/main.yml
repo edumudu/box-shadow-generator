@@ -27,4 +27,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Deploy in gh-pages
-      run: yarn deploy
+      run: |
+        git config --global user.email "eduardomudutiu@gmail.com"
+        git config --global user.name "Eduardo Wesley"
+        yarn deploy
