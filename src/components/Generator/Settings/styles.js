@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 
 export const SettingsTag = styled.div `
+  display: flex;
+  justify-content: center;
   flex: 1 1 35%;
+`
+
+export const Wrapper = styled.div `
+  flex: 1;
   padding: 0 20px;
   padding-top: 40px;
   max-width: 395px;
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 1024px) {
     max-width: 700px;
   }
 `
