@@ -21,15 +21,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    
-    - name: Config git
-      run: |
-        git config user.email "eduardomudutiu@gmail.com"
-        git config user.name "edumudu"
   
     - name: Install Depedences
       run: yarn
 
     # Runs a single command using the runners shell
     - name: Deploy in gh-pages
-      run: yarn deploy
+      run: |
+        git config --local user.email "eduardomudutiu@gmail.com"
+        git config --local user.name "edumudu"
+        yarn deploy
