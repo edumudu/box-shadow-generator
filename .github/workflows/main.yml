@@ -27,10 +27,8 @@ jobs:
       run: yarn
 
     # Runs a set of commands using the runners shell
-    - name: config git
+    - name: deploy
       run: |
         git config --global user.name "Eduardo Wesley",
-        git config --global user.email "eduardomudutiu@gmail.com".
-        
-    - name: deploy
-      run: yarn deploy
+        git config --global user.email "eduardomudutiu@gmail.com",
+        yarn deploy
