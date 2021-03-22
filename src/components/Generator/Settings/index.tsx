@@ -98,14 +98,14 @@ const Settings: FC = () => {
             name="Background color"
             value={containerBackground.rgba}
             alpha={containerBackground.alpha}
-            onChange={({ alpha, color }) => changeContainerBackground({ alpha, rgba: hexToRgba(color, alpha) })}
+            onChange={({ alpha, color }) => changeContainerBackground({ alpha, rgba: hexToRgba(color, alpha / 100) })}
           />
 
           <InputColor
             name="Box color"
             value={boxBackground.rgba}
             alpha={boxBackground.alpha}
-            onChange={({ alpha, color }) => changeBoxBackground({ alpha, rgba: hexToRgba(color, alpha) })}
+            onChange={({ alpha, color }) => changeBoxBackground({ alpha, rgba: hexToRgba(color, alpha / 100) })}
           />
         </Group>
 

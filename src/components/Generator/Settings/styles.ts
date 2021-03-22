@@ -7,6 +7,7 @@ export interface IconWrapperProps {
 export const SettingsTag = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 40px;
   flex: 1 1 35%;
 `;
 
@@ -66,6 +67,7 @@ export const IconWrapper = styled.div<IconWrapperProps>`
     font-size: 1.3rem;
     transition: color 0.1s;
     border: none;
+    background-color: transparent;
     color: inherit;
     outline: none;
 

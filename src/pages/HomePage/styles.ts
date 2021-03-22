@@ -16,9 +16,8 @@ export const MainContent = styled.main`
 
 export const Card = styled.div`
   margin-top: 40px;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
   min-height: 400px;
   background-color: #fff;
-  min-height: calc(100vh - 80px);
   overflow: hidden;
 `;
