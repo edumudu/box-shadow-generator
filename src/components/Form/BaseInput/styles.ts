@@ -1,20 +1,21 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const displayNoneTypes = [
-  'color',
-  'checkbox'
-]
+export interface InputProps {
+  type: string;
+}
 
-export const Group = styled.div `
+const displayNoneTypes = ['color', 'checkbox'];
+
+export const Group = styled.div`
   margin: 8px 0;
-`
+`;
 
-export const Input = styled.input `
+export const Input = styled.input<InputProps>`
   width: 100%;
-  display: ${props => displayNoneTypes.includes(props.type) ? 'none' : 'inline-block'}
-` 
+  display: ${props => (displayNoneTypes.includes(props.type) ? 'none' : 'inline-block')};
+`;
 
-export const Range = styled.input `
+export const Range = styled.input`
   -webkit-appearance: none;
   appearance: none;
   height: 5px;
@@ -41,19 +42,9 @@ export const Range = styled.input `
     background-color: #2f3542;
     cursor: pointer;
   }
-`
+`;
 
-export const ValueBox = styled.input `
-  position: relative;
-  width: 40px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 3px 5px;
-  text-align: center;
-  outline: none;
-`
-
-export const InputHead = styled.div `
+export const InputHead = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;

@@ -1,14 +1,23 @@
 import styled from 'styled-components';
+
 import { colors } from '../../../general-styles';
 
-export const Switch = styled.label `
+export interface TriggerProps {
+  active: boolean;
+}
+
+export interface InputProps {
+  type: string;
+}
+
+export const Switch = styled.label`
   display: flex;
   heigth: 20px;
   justify-content: center;
   align-items: center;
-`
+`;
 
-export const Trigger = styled.span `
+export const Trigger = styled.span<TriggerProps>`
   position: relative;
   display: inline-block;
   width: 40px;
@@ -23,13 +32,20 @@ export const Trigger = styled.span `
     content: '';
     position: absolute;
     top: 9px;
-    left: ${props => props.active ? 'calc(100% - 17px)' : '2px'};
+    left: ${({ active }) => (active ? 'calc(100% - 17px)' : '2px')};
     transform: translateY(-50%);
     display: inline-block;
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: ${props => props.active ? colors.gradient.start : colors.gradient.end };
+    background-color: ${({ active }) => (active ? colors.gradient.start : colors.gradient.end)};
     transition: left 0.4s;
   }
-`
+`;
+
+const displayNoneTypes = ['color', 'checkbox'];
+
+export const Input = styled.input<InputProps>`
+  width: 100%;
+  display: ${props => (displayNoneTypes.includes(props.type) ? 'none' : 'inline-block')};
+`;

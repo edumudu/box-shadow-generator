@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import { colors } from '../../general-styles'
 
-export const HeaderTag = styled.header `
+export interface HeaderTagProps {
+  bg: string;
+}
+
+export const HeaderTag = styled.header<HeaderTagProps>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -31,8 +35,8 @@ export const Button = styled.a `
   padding: 10px 30px;
 `
 
-export const Nav = styled.nav `
-  display: ${props => props.flex ? 'flex' : 'block'};
+export const Nav = styled.nav`
+  display: flex;
   justify-content: space-between;
   align-items: center;
 `

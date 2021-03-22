@@ -1,12 +1,16 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const SettingsTag = styled.div `
+export interface IconWrapperProps {
+  active: boolean;
+}
+
+export const SettingsTag = styled.div`
   display: flex;
   justify-content: center;
   flex: 1 1 35%;
-`
+`;
 
-export const Wrapper = styled.div `
+export const Wrapper = styled.div`
   flex: 1;
   padding: 0 20px;
   padding-top: 40px;
@@ -15,15 +19,15 @@ export const Wrapper = styled.div `
   @media screen and (max-width: 1024px) {
     max-width: 700px;
   }
-`
+`;
 
-export const Group = styled.div `
+export const Group = styled.div`
   margin: 8px 0;
   padding: 10px 5px;
   border-bottom: 1px solid #ccc;
-`
+`;
 
-export const Command = styled.pre `
+export const Command = styled.pre`
   padding: 15px;
   line-height: 24px;
   font-size: 0.85rem;
@@ -35,7 +39,7 @@ export const Command = styled.pre `
   white-space: nowrap;
 
   &::-webkit-scrollbar {
-    height: 5px;  
+    height: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -44,30 +48,34 @@ export const Command = styled.pre `
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: rgba(190,190,190,0.6);
+    background-color: rgba(190, 190, 190, 0.6);
   }
-`
+`;
 
-export const IconWrapper = styled.div `
+export const IconWrapper = styled.div<IconWrapperProps>`
   text-align: right;
-  color: ${props => props.active ? '#e67e22' : '#888'};
+  color: ${props => (props.active ? '#e67e22' : '#888')};
   margin-bottom: 5px;
 
-  > span { position: relative; }
+  > span {
+    position: relative;
+  }
 
-  i { 
+  button {
     cursor: pointer;
     font-size: 1.3rem;
     transition: color 0.1s;
+    border: none;
+    color: inherit;
 
     &:active {
       color: orange;
       transform: scale(0.8);
     }
   }
-`
+`;
 
-export const CopiedMessage = styled.div `
+export const CopiedMessage = styled.div`
   position: absolute;
   top: calc(-100% - 40px);
   left: 50%;
@@ -88,4 +96,4 @@ export const CopiedMessage = styled.div `
     box-shadow: 5px 5px 5px #ccc;
     background-color: #fff;
   }
-`
+`;

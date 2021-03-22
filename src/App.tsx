@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePage from './HomePage/index'
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
