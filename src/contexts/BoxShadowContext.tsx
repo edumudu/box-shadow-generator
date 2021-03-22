@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
 import { generateCssCommand } from '../utils/generateCssCommand';
-import { hexToRgb } from '../utils/colorsConvertion';
+import { hexToRgba } from '../utils/colorsConvertion';
 
 import { colors } from '../general-styles';
 
@@ -16,18 +16,16 @@ export interface BoxShadowContextData {
     length: number;
     blur: number;
     alpha: number;
-    mode: string;
+    mode: 'inset' | '';
   };
 
   boxBackground: {
     rgba: string;
-    hex: string;
     alpha: number;
   };
 
   containerBackground: {
     rgba: string;
-    hex: string;
     alpha: number;
   };
 
@@ -55,14 +53,12 @@ export function BoxShadowProvider({ children }: BoxShadowProviderProps) {
   });
 
   const [boxBackground, setBoxBackgound] = useState<BoxShadowContextData['boxBackground']>({
-    rgba: hexToRgb(colors.white, 1),
-    hex: colors.white,
+    rgba: hexToRgba(colors.white, 1),
     alpha: 100,
   });
 
   const [containerBackground, setContainerBackgound] = useState<BoxShadowContextData['boxBackground']>({
-    rgba: hexToRgb(colors.white, 1),
-    hex: colors.white,
+    rgba: hexToRgba(colors.white, 1),
     alpha: 100,
   });
 
@@ -72,6 +68,8 @@ export function BoxShadowProvider({ children }: BoxShadowProviderProps) {
     setBoxShadow({
       ...boxShadow,
       ...partial,
+
+      rgba: hexToRgba(partial.hex || boxShadow.hex, Number(((partial.alpha || boxShadow.alpha) / 100).toFixed(2))),
     });
   };
 

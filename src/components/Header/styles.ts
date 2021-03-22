@@ -1,11 +1,7 @@
-import styled from 'styled-components'
-import { colors } from '../../general-styles'
+import styled from 'styled-components';
+import { colors } from '../../general-styles';
 
-export interface HeaderTagProps {
-  bg: string;
-}
-
-export const HeaderTag = styled.header<HeaderTagProps>`
+export const HeaderTag = styled.header`
   display: flex;
   align-items: center;
   width: 100%;
@@ -13,19 +9,20 @@ export const HeaderTag = styled.header<HeaderTagProps>`
   padding: 0 2%;
   font-weight: 600;
   font-size: 1.8rem;
-  color: ${props => props.bg > '#cccccc' ? colors.black : colors.white };
-  background-color: ${props => props.bg};
+  color: ${colors.black};
+  background-color: ${colors.white};
   box-shadow: 0 0 3px #ddd;
-`
-export const Logo = styled.h1 `
+`;
+
+export const Logo = styled.h1`
   font-size: 1.8rem;
   font-weight: 300;
-`
+`;
 
-export const Button = styled.a `
-  background: ${colors.gradient.start}; 
-  background:  linear-gradient(to right, ${colors.gradient.start}, ${colors.gradient.end});
-  background:  -webkit-linear-gradient(to right, ${colors.gradient.start}, ${colors.gradient.end}); 
+export const Button = styled.a`
+  background: ${colors.gradient.start};
+  background: linear-gradient(to right, ${colors.gradient.start}, ${colors.gradient.end});
+  background: -webkit-linear-gradient(to right, ${colors.gradient.start}, ${colors.gradient.end});
   color: #ffffff;
   text-decoration: none;
   border-radius: 2px;
@@ -33,10 +30,10 @@ export const Button = styled.a `
   font-weight: 300;
   font-size: 1rem;
   padding: 10px 30px;
-`
+`;
 
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;

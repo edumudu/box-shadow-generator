@@ -1,5 +1,5 @@
 interface Shadow {
-  mode: string;
+  mode: 'inset' | '';
   x: number;
   y: number;
   blur: number;

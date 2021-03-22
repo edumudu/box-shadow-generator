@@ -67,6 +67,7 @@ export const IconWrapper = styled.div<IconWrapperProps>`
     transition: color 0.1s;
     border: none;
     color: inherit;
+    outline: none;
 
     &:active {
       color: orange;

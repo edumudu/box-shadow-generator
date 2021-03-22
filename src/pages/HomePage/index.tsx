@@ -4,13 +4,13 @@ import Header from '../../components/Header';
 import Generator from '../../components/Generator';
 import { BoxShadowProvider } from '../../contexts/BoxShadowContext';
 
-import { Container, colors } from '../../general-styles';
+import { Container } from '../../general-styles';
 import { MainContent, GlobalStyle, Card } from './styles';
 
 const HomePage = () => (
   <BoxShadowProvider>
     <GlobalStyle />
-    <Header bg={colors.white} />
+    <Header />
 
     <MainContent>
       <Container>

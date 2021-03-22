@@ -9,7 +9,6 @@ const Generator = () => {
   return (
     <Wrapper>
       <Settings />
-
       <Preview />
     </Wrapper>
   );

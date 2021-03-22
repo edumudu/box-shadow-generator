@@ -7,7 +7,7 @@ import { InputColor } from '../../Form/InputColor';
 import { InputRange } from '../../Form/InputRange';
 import { InputSwitch } from '../../Form/InputSwitch';
 import { BoxShadowContext } from '../../../contexts/BoxShadowContext';
-import { hexToRgb } from '../../../utils/colorsConvertion';
+import { hexToRgba } from '../../../utils/colorsConvertion';
 
 let copyButtonTimeout: NodeJS.Timeout;
 
@@ -91,21 +91,21 @@ const Settings: FC = () => {
             name="Shadow color"
             value={boxShadow.rgba}
             alpha={boxShadow.alpha}
-            onChange={({ alpha, color }) => changeBoxShadow({ alpha, rgba: hexToRgb(color, alpha) })}
+            onChange={({ alpha, color }) => changeBoxShadow({ alpha, hex: color })}
           />
 
           <InputColor
             name="Background color"
             value={containerBackground.rgba}
             alpha={containerBackground.alpha}
-            onChange={({ alpha, color }) => changeContainerBackground({ alpha, rgba: hexToRgb(color, alpha) })}
+            onChange={({ alpha, color }) => changeContainerBackground({ alpha, rgba: hexToRgba(color, alpha) })}
           />
 
           <InputColor
             name="Box color"
             value={boxBackground.rgba}
             alpha={boxBackground.alpha}
-            onChange={({ alpha, color }) => changeBoxBackground({ alpha, rgba: hexToRgb(color, alpha) })}
+            onChange={({ alpha, color }) => changeBoxBackground({ alpha, rgba: hexToRgba(color, alpha) })}
           />
         </Group>
 

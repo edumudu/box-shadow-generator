@@ -19,12 +19,13 @@ export const PreviewTag = styled.div<PreviewTagProps>`
   padding: 100px 0 80px;
 `;
 
-export const PreviewElement = styled.div<PreviewElementProps>`
+export const PreviewElement = styled.div.attrs<PreviewElementProps>(({ shadow }) => ({
+  style: { boxShadow: shadow },
+}))<PreviewElementProps>`
   width: 300px;
   height: 400px;
   padding: 50px 20px;
   color: ${({ box }) => (box > '#999999' ? '#000000' : '#ffffff')};
   background-color: ${({ box }) => box};
   font-size: 0.9rem;
-  ${({ shadow }) => shadow}
 `;
