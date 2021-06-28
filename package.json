@@ -10,7 +10,7 @@
     "lint:js": "eslint . --ignore-path .gitignore"
   },
   "dependencies": {
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.24.0",
     "rc-color-picker": "^1.2.6",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
